@@ -4,10 +4,13 @@
  */
 package br.com.projetopoo.model;
 
+import java.util.List;
+
 /**
  *
  * @author luqin
  */
 public class Monografia extends Item {
-    
+    private String id;
+    private List<String> autores;
 }

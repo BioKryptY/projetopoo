@@ -4,12 +4,14 @@
  */
 package br.com.projetopoo.model;
 
-/**
- *
- * @author luqin
- */
+import java.util.Date;
+
 public class Item {
     
     private Localizacao localizacao;
+    private String titulo;
+    private Date dataPublicacao;
+    private Status status;
+    
     
 }

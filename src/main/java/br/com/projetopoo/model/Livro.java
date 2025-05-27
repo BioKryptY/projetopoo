@@ -9,5 +9,6 @@ package br.com.projetopoo.model;
  * @author luqin
  */
 public class Livro extends Item {
-    
+    private String ISBN;
+    private String editora;
 }

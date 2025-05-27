@@ -8,7 +8,7 @@ package br.com.projetopoo.model;
  *
  * @author luqin
  */
-public class Periodico extends Item {
-    private String ISSN;
-    private String editora;
+public enum Status {
+      DISPONIVEL,
+      INDISPONIVEL
 }

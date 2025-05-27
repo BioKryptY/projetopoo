@@ -4,10 +4,14 @@
  */
 package br.com.projetopoo.model;
 
+import java.net.URI;
+
 /**
  *
  * @author luqin
  */
 public class Midia extends Item {
-    
+    private String DOI;
+    private URI url;
+    private String editora;
 }

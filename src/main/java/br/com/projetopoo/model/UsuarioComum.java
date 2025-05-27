@@ -9,5 +9,6 @@ package br.com.projetopoo.model;
  * @author luqin
  */
 public class UsuarioComum extends Usuario {
+    private String matricula;
     
 }

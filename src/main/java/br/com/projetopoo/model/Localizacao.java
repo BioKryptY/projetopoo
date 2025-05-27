@@ -9,5 +9,8 @@ package br.com.projetopoo.model;
  * @author luqin
  */
 public class Localizacao {
+    private String estante;
+    private String pratileira;
+    private String secao;
     
 }

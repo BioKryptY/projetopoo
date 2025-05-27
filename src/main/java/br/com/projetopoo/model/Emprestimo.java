@@ -4,10 +4,16 @@
  */
 package br.com.projetopoo.model;
 
+import java.util.Date;
+
 /**
  *
  * @author luqin
  */
 public class Emprestimo {
+    private Usuario usuario;
+    private Item item;
+    private Date dataEmprestimo;
+    private Date dataDevolucao;
     
 }
