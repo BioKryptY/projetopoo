@@ -1,11 +1,15 @@
-package br.com.projetopoo;
+package br.com.projetopoo.model;
 
 public class Usuario {
     private String nome;
     private String email;
     private String senha;
     private String telefone;
-
+    
+    public Usuario(){
+        
+    }
+    
     public Usuario(String nome, String email, String senha, String telefone) {
         this.nome = nome;
         this.email = email;

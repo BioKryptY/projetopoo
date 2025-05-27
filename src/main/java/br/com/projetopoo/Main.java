@@ -4,11 +4,13 @@
 
 package br.com.projetopoo;
 
+import br.com.projetopoo.view.TelaInicial;
+
 /**
  *
  * @author luqin
  */
-public class ProjetoPOO {
+public class Main {
 
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> {
