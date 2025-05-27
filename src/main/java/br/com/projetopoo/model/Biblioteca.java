@@ -4,9 +4,14 @@
  */
 package br.com.projetopoo.model;
 
+import java.util.List;
+
 /**
  *
  * @author luqin
  */
 public class Biblioteca {
+    private List<Usuario> usuarios;
+    private List<Item> items;
+    
 }
