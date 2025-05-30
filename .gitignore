@@ -1,0 +1,39 @@
+# Arquivos compilados
+*.class
+
+# Arquivos de log
+*.log
+
+# Arquivos de configuração específicos
+ConnectionFactory.java
+
+# Arquivos de IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Arquivos de build
+/target/
+/target/**
+target/
+build/
+out/
+bin/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de dependências
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Arquivos de cache
+*.cache
