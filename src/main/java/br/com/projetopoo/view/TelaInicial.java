@@ -8,6 +8,7 @@ package br.com.projetopoo.view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
 
 /**
  *
@@ -20,6 +21,13 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
+        Connection conn = br.com.projetopoo.model.DAO.ConnectionFactory.getConnection();
+        if (conn != null) {
+            jLabel1.setText("Conexão estabelecida com sucesso!");
+        }
+        else {
+            jLabel1.setText("Falha ao estabelecer conexão.");
+        }
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         //
