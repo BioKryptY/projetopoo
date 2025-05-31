@@ -1,14 +1,13 @@
-
 -- Tabela Usuario (Superclasse)
 CREATE TABLE usuario (
     id_usuario SERIAL PRIMARY KEY,
     nome VARCHAR(100),
     email VARCHAR(100),
     senha VARCHAR(100),
-    telefone VARCHAR(20)
+    telefone VARCHAR(20),
+    tipo VARCHAR(50)
 );
 
--- Especializações
 CREATE TABLE usuario_comum (
     id_usuario INT PRIMARY KEY,
     matricula VARCHAR(50),
@@ -21,15 +20,14 @@ CREATE TABLE usuario_especial (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
--- Tabela Localizacao
 CREATE TABLE localizacao (
     id_localizacao SERIAL PRIMARY KEY,
     estante VARCHAR(20),
     pratileira VARCHAR(20),
-    secao VARCHAR(50)
+    secao VARCHAR(50),
+    UNIQUE (estante, pratileira, secao)
 );
 
--- Tabela Emprestimo
 CREATE TABLE emprestimo (
     id_emprestimo SERIAL PRIMARY KEY,
     id_usuario INT,
@@ -38,19 +36,24 @@ CREATE TABLE emprestimo (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
--- Tabela Item (Superclasse)
+CREATE TABLE emprestimo_item (
+    id_emprestimo INT,
+    id_item INT,
+    PRIMARY KEY (id_emprestimo, id_item),
+    FOREIGN KEY (id_emprestimo) REFERENCES emprestimo(id_emprestimo) ON DELETE CASCADE,
+    FOREIGN KEY (id_item) REFERENCES item(id_item) ON DELETE CASCADE
+);
+
 CREATE TABLE item (
     id_item SERIAL PRIMARY KEY,
     titulo VARCHAR(200),
-    data_publicacao DATE,
+    data_publicacao VARCHAR(10),
     status VARCHAR(20),
+    tipo VARCHAR(50),
     id_localizacao INT UNIQUE,
-    id_emprestimo INT,
-    FOREIGN KEY (id_localizacao) REFERENCES localizacao(id_localizacao),
-    FOREIGN KEY (id_emprestimo) REFERENCES emprestimo(id_emprestimo)
+    FOREIGN KEY (id_localizacao) REFERENCES localizacao(id_localizacao)
 );
 
--- Especializações de Item
 CREATE TABLE livro (
     id_item INT PRIMARY KEY,
     isbn VARCHAR(20),
