@@ -65,7 +65,7 @@ public class TelaUsuarioEspecial extends JFrame {
       JPanel painelBusca = new JPanel(new FlowLayout(FlowLayout.LEFT));
       campoBusca = new JTextField(20);
       JButton botaoBuscar = new JButton("Buscar");
-      botaoBuscar.addActionListener(e -> buscarItens());
+      botaoBuscar.addActionListener(_ -> buscarItens());
       painelBusca.add(new JLabel("Buscar por título:"));
       painelBusca.add(campoBusca);
       painelBusca.add(botaoBuscar);
@@ -97,13 +97,13 @@ public class TelaUsuarioEspecial extends JFrame {
       JButton botaoExcluirUsuario = new JButton("Excluir Usuário");
       JButton botaoSair = new JButton("Sair");
 
-      botaoCadastrarItem.addActionListener(e -> cadastrarItem());
-      botaoEditarItem.addActionListener(e -> editarItem());
-      botaoExcluirItem.addActionListener(e -> excluirItem());
-      botaoCadastrarUsuario.addActionListener(e -> cadastrarUsuario());
-      botaoEditarUsuario.addActionListener(e -> editarUsuario());
-      botaoExcluirUsuario.addActionListener(e -> excluirUsuario());
-      botaoSair.addActionListener(e -> sair());
+      botaoCadastrarItem.addActionListener(_ -> cadastrarItem());
+      botaoEditarItem.addActionListener(_ -> editarItem());
+      botaoExcluirItem.addActionListener(_ -> excluirItem());
+      botaoCadastrarUsuario.addActionListener(_ -> cadastrarUsuario());
+      botaoEditarUsuario.addActionListener(_ -> editarUsuario());
+      botaoExcluirUsuario.addActionListener(_ -> excluirUsuario());
+      botaoSair.addActionListener(_ -> sair());
 
       painelBotoes.add(botaoCadastrarItem);
       painelBotoes.add(botaoEditarItem);
@@ -173,7 +173,6 @@ public class TelaUsuarioEspecial extends JFrame {
             });
          }
 
-         String sql = "SELECT * FROM emprestimo WHERE data_devolucao IS NULL";
          List<Emprestimo> emprestimos = bibliotecaService.listarEmprestimosAtivos();
          modeloEmprestimos.setRowCount(0);
          for (Emprestimo emprestimo : emprestimos) {

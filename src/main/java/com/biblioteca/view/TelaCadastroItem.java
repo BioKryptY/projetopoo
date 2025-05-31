@@ -75,7 +75,7 @@ public class TelaCadastroItem extends JFrame {
       painelFormulario.add(new JLabel("Tipo:"));
       String[] tipos = { "LIVRO", "PERIODICO", "MIDIA", "MONOGRAFIA" };
       comboTipo = new JComboBox<>(tipos);
-      comboTipo.addActionListener(e -> atualizarPainelEspecifico());
+      comboTipo.addActionListener(_ -> atualizarPainelEspecifico());
       painelFormulario.add(comboTipo);
 
       painelFormulario.add(new JLabel("Estante:"));
@@ -101,8 +101,8 @@ public class TelaCadastroItem extends JFrame {
       JButton botaoSalvar = new JButton("Salvar");
       JButton botaoCancelar = new JButton("Cancelar");
 
-      botaoSalvar.addActionListener(e -> salvarItem());
-      botaoCancelar.addActionListener(e -> cancelar());
+      botaoSalvar.addActionListener(_ -> salvarItem());
+      botaoCancelar.addActionListener(_ -> cancelar());
 
       painelBotoes.add(botaoSalvar);
       painelBotoes.add(botaoCancelar);
