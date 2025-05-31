@@ -5,7 +5,6 @@
 *.log
 
 # Arquivos de configuração específicos
-ConnectionFactory.java
 
 # Arquivos de IDE
 .idea/
