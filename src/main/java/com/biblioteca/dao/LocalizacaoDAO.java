@@ -15,7 +15,7 @@ public class LocalizacaoDAO implements GenericDAO<Localizacao> {
    private Connection conexao;
 
    public LocalizacaoDAO() throws SQLException {
-      this.conexao = ConexaoBD.getConexao();
+      this.conexao = ConnectionFactory.getConexao();
    }
 
    @Override
@@ -94,7 +94,7 @@ public class LocalizacaoDAO implements GenericDAO<Localizacao> {
       String sql = "SELECT * FROM localizacao";
       List<Localizacao> localizacoes = new ArrayList<>();
 
-      try (Connection conn = ConexaoBD.getConexao();
+      try (Connection conn = ConnectionFactory.getConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery()) {
 

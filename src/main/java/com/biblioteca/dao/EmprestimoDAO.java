@@ -19,7 +19,7 @@ public class EmprestimoDAO implements GenericDAO<Emprestimo> {
    private ItemDAO itemDAO;
 
    public EmprestimoDAO() throws SQLException {
-      this.conexao = ConexaoBD.getConexao();
+      this.conexao = ConnectionFactory.getConexao();
       this.usuarioDAO = new UsuarioDAO();
       this.itemDAO = new ItemDAO();
    }

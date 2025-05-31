@@ -17,7 +17,7 @@ public class UsuarioDAO implements GenericDAO<Usuario> {
    private Connection conexao;
 
    public UsuarioDAO() throws SQLException {
-      this.conexao = ConexaoBD.getConexao();
+      this.conexao = ConnectionFactory.getConexao();
    }
 
    @Override

@@ -21,7 +21,7 @@ public class ItemDAO implements GenericDAO<Item> {
    private Connection conexao;
 
    public ItemDAO() throws SQLException {
-      this.conexao = ConexaoBD.getConexao();
+      this.conexao = ConnectionFactory.getConexao();
    }
 
    @Override
