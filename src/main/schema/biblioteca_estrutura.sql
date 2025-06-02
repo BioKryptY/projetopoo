@@ -1,4 +1,5 @@
 -- Tabela Usuario (Superclasse)
+CREATE database projetopoo;
 CREATE TABLE usuario (
     id_usuario SERIAL PRIMARY KEY,
     nome VARCHAR(100),
@@ -36,13 +37,7 @@ CREATE TABLE emprestimo (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
-CREATE TABLE emprestimo_item (
-    id_emprestimo INT,
-    id_item INT,
-    PRIMARY KEY (id_emprestimo, id_item),
-    FOREIGN KEY (id_emprestimo) REFERENCES emprestimo(id_emprestimo) ON DELETE CASCADE,
-    FOREIGN KEY (id_item) REFERENCES item(id_item) ON DELETE CASCADE
-);
+
 
 CREATE TABLE item (
     id_item SERIAL PRIMARY KEY,
@@ -52,6 +47,14 @@ CREATE TABLE item (
     tipo VARCHAR(50),
     id_localizacao INT UNIQUE,
     FOREIGN KEY (id_localizacao) REFERENCES localizacao(id_localizacao)
+);
+
+CREATE TABLE emprestimo_item (
+    id_emprestimo INT,
+    id_item INT,
+    PRIMARY KEY (id_emprestimo, id_item),
+    FOREIGN KEY (id_emprestimo) REFERENCES emprestimo(id_emprestimo) ON DELETE CASCADE,
+    FOREIGN KEY (id_item) REFERENCES item(id_item) ON DELETE CASCADE
 );
 
 CREATE TABLE livro (
