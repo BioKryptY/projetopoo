@@ -63,7 +63,7 @@ public class TelaUsuarioComum extends JFrame {
       JPanel painelBusca = new JPanel(new FlowLayout(FlowLayout.LEFT));
       campoBusca = new JTextField(20);
       JButton botaoBuscar = new JButton("Buscar");
-      botaoBuscar.addActionListener(_  -> buscarItens());
+      botaoBuscar.addActionListener(x  -> buscarItens());
       painelBusca.add(new JLabel("Buscar por título:"));
       painelBusca.add(campoBusca);
       painelBusca.add(botaoBuscar);
@@ -86,9 +86,9 @@ public class TelaUsuarioComum extends JFrame {
       JButton botaoDevolver = new JButton("Devolver Item");
       JButton botaoSair = new JButton("Sair");
 
-      botaoEmprestar.addActionListener(_  -> emprestarItem());
-      botaoDevolver.addActionListener(_  -> devolverItem());
-      botaoSair.addActionListener(_  -> sair());
+      botaoEmprestar.addActionListener(x  -> emprestarItem());
+      botaoDevolver.addActionListener(x  -> devolverItem());
+      botaoSair.addActionListener(x  -> sair());
 
       painelBotoes.add(botaoEmprestar);
       painelBotoes.add(botaoDevolver);

@@ -103,8 +103,8 @@ public class TelaEdicaoItem extends JFrame {
       JButton botaoSalvar = new JButton("Salvar");
       JButton botaoCancelar = new JButton("Cancelar");
 
-      botaoSalvar.addActionListener(_ -> salvarItem());
-      botaoCancelar.addActionListener(_ -> cancelar());
+      botaoSalvar.addActionListener(x -> salvarItem());
+      botaoCancelar.addActionListener(x -> cancelar());
 
       painelBotoes.add(botaoSalvar);
       painelBotoes.add(botaoCancelar);

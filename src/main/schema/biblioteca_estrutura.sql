@@ -37,8 +37,11 @@ CREATE TABLE emprestimo (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 CREATE TABLE item (
     id_item SERIAL PRIMARY KEY,
     titulo VARCHAR(200),

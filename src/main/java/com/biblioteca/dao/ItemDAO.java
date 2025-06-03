@@ -355,7 +355,7 @@ public class ItemDAO implements GenericDAO<Item> {
             "LEFT JOIN midia m ON i.id_item = m.id_item " +
             "LEFT JOIN monografia mo ON i.id_item = mo.id_item " +
             "LEFT JOIN localizacao loc ON i.id_localizacao = loc.id_localizacao " +
-            "WHERE i.titulo LIKE ?";
+            "WHERE UPPER(i.titulo) LIKE UPPER(?)";
 
       List<Item> itens = new ArrayList<>();
 

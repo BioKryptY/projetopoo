@@ -65,7 +65,7 @@ public class TelaUsuarioEspecial extends JFrame {
       JPanel painelBusca = new JPanel(new FlowLayout(FlowLayout.LEFT));
       campoBusca = new JTextField(20);
       JButton botaoBuscar = new JButton("Buscar");
-      botaoBuscar.addActionListener(_ -> buscarItens());
+      botaoBuscar.addActionListener(x -> buscarItens());
       painelBusca.add(new JLabel("Buscar por título:"));
       painelBusca.add(campoBusca);
       painelBusca.add(botaoBuscar);
@@ -97,13 +97,13 @@ public class TelaUsuarioEspecial extends JFrame {
       JButton botaoExcluirUsuario = new JButton("Excluir Usuário");
       JButton botaoSair = new JButton("Sair");
 
-      botaoCadastrarItem.addActionListener(_ -> cadastrarItem());
-      botaoEditarItem.addActionListener(_ -> editarItem());
-      botaoExcluirItem.addActionListener(_ -> excluirItem());
-      botaoCadastrarUsuario.addActionListener(_ -> cadastrarUsuario());
-      botaoEditarUsuario.addActionListener(_ -> editarUsuario());
-      botaoExcluirUsuario.addActionListener(_ -> excluirUsuario());
-      botaoSair.addActionListener(_ -> sair());
+      botaoCadastrarItem.addActionListener(x -> cadastrarItem());
+      botaoEditarItem.addActionListener(x -> editarItem());
+      botaoExcluirItem.addActionListener(x -> excluirItem());
+      botaoCadastrarUsuario.addActionListener(x -> cadastrarUsuario());
+      botaoEditarUsuario.addActionListener(x -> editarUsuario());
+      botaoExcluirUsuario.addActionListener(x -> excluirUsuario());
+      botaoSair.addActionListener(x -> sair());
 
       painelBotoes.add(botaoCadastrarItem);
       painelBotoes.add(botaoEditarItem);
