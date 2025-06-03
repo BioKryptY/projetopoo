@@ -121,7 +121,7 @@ public class TelaUsuarioEspecial extends JFrame {
       tabelaUsuarios = new JTable(modeloUsuarios);
       JScrollPane scrollUsuarios = new JScrollPane(tabelaUsuarios);
 
-      String[] colunasEmprestimos = { "ID", "Usuário", "Itens", "Data Empréstimo", "Data Prevista Devolução" };
+      String[] colunasEmprestimos = { "ID", "Usuário", "Itens", "Data Empréstimo", "Data Prevista Devolução", "Multa" };
       modeloEmprestimos = new DefaultTableModel(colunasEmprestimos, 0);
       tabelaEmprestimos = new JTable(modeloEmprestimos);
       JScrollPane scrollEmprestimos = new JScrollPane(tabelaEmprestimos);
@@ -232,7 +232,8 @@ public class TelaUsuarioEspecial extends JFrame {
                   emprestimo.getUsuario().getNome(),
                   itensFormatados.toString(),
                   dataEmprestimoFormatada,
-                  dataPrevistaDevolucao
+                  dataPrevistaDevolucao,
+                  "R$ " + emprestimo.calcularMulta()
             });
          }
       } catch (Exception e) {
@@ -269,7 +270,11 @@ public class TelaUsuarioEspecial extends JFrame {
       }
       try {
          Item item = bibliotecaService.buscarItemPorId(id);
+         
          modeloItens.setRowCount(0);
+         if (item == null) {
+        	 return;
+         }
          modeloItens.addRow(new Object[] {
                item.getId(),
                item.getTitulo(),

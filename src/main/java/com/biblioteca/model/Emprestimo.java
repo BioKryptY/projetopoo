@@ -1,8 +1,10 @@
 package com.biblioteca.model;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.DecimalFormat;
 
 public class Emprestimo {
    private Long id;
@@ -50,6 +52,22 @@ public class Emprestimo {
          this.itens = new ArrayList<>();
       }
       this.itens.add(item);
+   }
+
+   public String calcularMulta() {
+      DecimalFormat df = new DecimalFormat("#.00");
+
+      if (this.getDataDevolucao() == null) {
+         return "0,00";
+      }
+
+      LocalDateTime dataLimite = this.getDataEmprestimo().plusDays(15);
+      if (this.getDataDevolucao().isAfter(dataLimite)) {
+         long diasAtraso = java.time.Duration.between(dataLimite, this.getDataDevolucao()).toDays();
+         float total = diasAtraso * 1.50f; // Exemplo: R$1,50 por dia de atraso
+         return df.format(total);
+      }
+      return "0,00";
    }
 
    public LocalDateTime getDataEmprestimo() {

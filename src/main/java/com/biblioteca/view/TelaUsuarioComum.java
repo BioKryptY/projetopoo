@@ -76,7 +76,7 @@ public class TelaUsuarioComum extends JFrame {
       tabelaItens = new JTable(modeloItens);
       JScrollPane scrollItens = new JScrollPane(tabelaItens);
 
-      String[] colunasEmprestimos = { "ID", "Item", "Data Empréstimo", "Data Prevista Devolução" };
+      String[] colunasEmprestimos = { "ID", "Item", "Data Empréstimo", "Data Prevista Devolução", "Multa" };
       modeloEmprestimos = new DefaultTableModel(colunasEmprestimos, 0);
       tabelaEmprestimos = new JTable(modeloEmprestimos);
       JScrollPane scrollEmprestimos = new JScrollPane(tabelaEmprestimos);
@@ -151,7 +151,8 @@ public class TelaUsuarioComum extends JFrame {
                   emprestimo.getId(),
                   itensFormatados.toString(),
                   dataEmprestimoFormatada,
-                  dataPrevistaDevolucao
+                  dataPrevistaDevolucao,
+                  "R$ " + emprestimo.calcularMulta()
             });
          }
       } catch (Exception e) {
