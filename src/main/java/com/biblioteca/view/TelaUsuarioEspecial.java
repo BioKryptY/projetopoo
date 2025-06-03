@@ -2,9 +2,13 @@ package com.biblioteca.view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.GridLayout;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +31,7 @@ public class TelaUsuarioEspecial extends JFrame {
    private JTable tabelaUsuarios;
    private JTable tabelaEmprestimos;
    private JTextField campoBusca;
+   private JTextField campoBuscaById;
    private DefaultTableModel modeloItens;
    private DefaultTableModel modeloUsuarios;
    private DefaultTableModel modeloEmprestimos;
@@ -62,15 +67,48 @@ public class TelaUsuarioEspecial extends JFrame {
       painelUsuario.add(labelUsuario);
       painelSuperior.add(painelUsuario, BorderLayout.NORTH);
 
-      JPanel painelBusca = new JPanel(new FlowLayout(FlowLayout.LEFT));
+      JPanel painelSaudacao = new JPanel(new BorderLayout());
+      painelSaudacao.add(painelUsuario, BorderLayout.NORTH);
+      painelSaudacao.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
+
+      painelSuperior.add(painelSaudacao, BorderLayout.NORTH);
+
+      // Painel central com os dois campos de busca lado a lado
+      JPanel painelBuscas = new JPanel(new GridBagLayout());
+      GridBagConstraints gbc = new GridBagConstraints();
+      gbc.insets = new Insets(0, 10, 0, 10); // Espaçamento entre componentes
+      gbc.fill = GridBagConstraints.HORIZONTAL;
+
+      // Campo: Buscar por título
       campoBusca = new JTextField(20);
       JButton botaoBuscar = new JButton("Buscar");
       botaoBuscar.addActionListener(x -> buscarItens());
-      painelBusca.add(new JLabel("Buscar por título:"));
-      painelBusca.add(campoBusca);
-      painelBusca.add(botaoBuscar);
-      painelSuperior.add(painelBusca, BorderLayout.CENTER);
 
+      gbc.gridx = 0;
+      gbc.gridy = 0;
+      painelBuscas.add(new JLabel("Buscar por título:"), gbc);
+
+      gbc.gridx = 1;
+      painelBuscas.add(campoBusca, gbc);
+
+      gbc.gridx = 2;
+      painelBuscas.add(botaoBuscar, gbc);
+
+      // Campo: Buscar por ID
+      campoBuscaById = new JTextField(20);
+      JButton botaoBuscarById = new JButton("Buscar");
+      botaoBuscarById.addActionListener(x -> buscarItensById());
+
+      gbc.gridx = 3;
+      painelBuscas.add(new JLabel("Buscar por ID:"), gbc);
+
+      gbc.gridx = 4;
+      painelBuscas.add(campoBuscaById, gbc);
+
+      gbc.gridx = 5;
+      painelBuscas.add(botaoBuscarById, gbc);
+
+      painelSuperior.add(painelBuscas, BorderLayout.CENTER);
       painelPrincipal.add(painelSuperior, BorderLayout.NORTH);
 
       String[] colunasItens = { "ID", "Título", "Tipo", "Disponível", "Localização" };
@@ -218,6 +256,29 @@ public class TelaUsuarioEspecial extends JFrame {
                         item.getLocalizacao().getSecao() : "Não definida"
             });
          }
+      } catch (Exception e) {
+         JOptionPane.showMessageDialog(this, "Erro ao buscar itens: " + e.getMessage());
+      }
+   }
+
+   private void buscarItensById() {
+      Long id = campoBuscaById.getText().isEmpty() ? null : Long.parseLong(campoBuscaById.getText());
+
+      if (id == null) {
+         return;
+      }
+      try {
+         Item item = bibliotecaService.buscarItemPorId(id);
+         modeloItens.setRowCount(0);
+         modeloItens.addRow(new Object[] {
+               item.getId(),
+               item.getTitulo(),
+               item.getTipo(),
+               item.isDisponivel() ? "Sim" : "Não",
+               item.getLocalizacao() != null ? item.getLocalizacao().getEstante() + " - " +
+                     item.getLocalizacao().getPratileira() + " - " +
+                     item.getLocalizacao().getSecao() : "Não definida"
+         });
       } catch (Exception e) {
          JOptionPane.showMessageDialog(this, "Erro ao buscar itens: " + e.getMessage());
       }
