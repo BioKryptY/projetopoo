@@ -229,8 +229,8 @@ public class TelaUsuarioComum extends JFrame {
 
          if (emprestimo != null && !emprestimo.getItens().isEmpty()) {
 
-            Item itemParaDevolver = emprestimo.getItens().get(0);
-            bibliotecaService.realizarDevolucao(itemParaDevolver);
+            List<Item> itensParaDevolver = emprestimo.getItens();
+            bibliotecaService.realizarDevolucao(itensParaDevolver);
             JOptionPane.showMessageDialog(this, "Item devolvido com sucesso!");
             carregarDados();
          } else {

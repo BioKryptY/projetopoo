@@ -147,19 +147,21 @@ public class BibliotecaService {
       }
    }
 
-   public void realizarDevolucao(Item item) throws Exception {
+   public void realizarDevolucao(List<Item> itens) throws Exception {
 
-      Emprestimo emprestimoAtivo = emprestimoDAO.buscarEmprestimoAtivoPorItem(item.getId());
+      Emprestimo emprestimoAtivo = emprestimoDAO.buscarEmprestimoAtivoPorItem(itens.get(0).getId());
 
       if (emprestimoAtivo == null) {
          throw new Exception("Item não possui empréstimo ativo registrado.");
       }
 
-      emprestimoAtivo.setDataDevolucao(LocalDateTime.now());
-      emprestimoDAO.atualizar(emprestimoAtivo);
+      for (Item item : itens) {
+         emprestimoAtivo.setDataDevolucao(LocalDateTime.now());
+         emprestimoDAO.atualizar(emprestimoAtivo);
 
-      item.setStatus(StatusItem.DISPONIVEL);
-      itemDAO.atualizar(item);
+         item.setStatus(StatusItem.DISPONIVEL);
+         itemDAO.atualizar(item);
+      }
    }
 
    public List<Emprestimo> listarEmprestimos() throws Exception {
