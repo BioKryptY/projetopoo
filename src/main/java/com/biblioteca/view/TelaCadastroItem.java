@@ -82,7 +82,7 @@ public class TelaCadastroItem extends JFrame {
       campoEstante = new JTextField();
       painelFormulario.add(campoEstante);
 
-      painelFormulario.add(new JLabel("Pratileira:"));
+      painelFormulario.add(new JLabel("Prateleira:"));
       campoPratileira = new JTextField();
       painelFormulario.add(campoPratileira);
 
